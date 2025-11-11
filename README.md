@@ -1,2 +1,2 @@
-# bluewave-tech-help
-Friendly local tech support website built with React and Firebase.
+### 📄 Product Requirements Document
+See the full PRD [here](./docs/PRD.md)
