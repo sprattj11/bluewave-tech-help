@@ -1,73 +1,113 @@
-# React + TypeScript + Vite
+# BlueWave Tech Help - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, professional tech support service website built with React and Tailwind CSS. This frontend application provides an easy way for customers to book tech assistance appointments and learn about available services.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Customer-Facing Pages**: Home, About, Services, and Contact pages
+- **Responsive Design**: Mobile-friendly interface built with Tailwind CSS
+- **Modern UI**: Clean, professional design using the BlueWave brand colors
+- **React Router**: Client-side routing for seamless navigation
+- **TypeScript**: Type-safe development for better code quality
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **Tailwind CSS v4** - Utility-first CSS framework
+- **React Router v6** - Client-side routing
 
-## Expanding the ESLint configuration
+## 📋 Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js (v18 or higher)
+- npm or yarn
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🏃 Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Install dependencies
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Start the development server
+npm run dev
 ```
+
+The app will be available at `http://localhost:5173` (or the next available port).
+
+### Build
+
+```bash
+# Build for production
+npm run build
+```
+
+### Preview Production Build
+
+```bash
+# Preview the production build locally
+npm run preview
+```
+
+### Linting
+
+```bash
+# Run ESLint
+npm run lint
+```
+
+## 📁 Project Structure
+
+```
+frontend/
+├── public/          # Static assets
+├── src/
+│   ├── assets/      # Images and other assets
+│   ├── components/  # Reusable React components
+│   │   └── Navigation.tsx
+│   ├── pages/       # Page components
+│   │   ├── Home.tsx
+│   │   ├── About.tsx
+│   │   ├── Services.tsx
+│   │   └── Contact.tsx
+│   ├── App.tsx      # Main app component with routing
+│   ├── main.tsx     # Application entry point
+│   └── index.css    # Global styles and design system
+├── index.html       # HTML template
+└── package.json     # Dependencies and scripts
+```
+
+## 🎨 Design System
+
+The application uses the BlueWave brand colors:
+
+- **BlueWave Blue**: `#007BFF` - Primary brand color
+- **White**: `#FFFFFF` - Background and contrast
+- **Accent Gray**: `#F3F4F6` - Secondary background
+
+Typography uses the Inter font family (with system font fallbacks).
+
+## 📄 Documentation
+
+For complete project requirements and specifications, see the [Product Requirements Document](../docs/PRD.md).
+
+## 🔜 Coming Soon
+
+- Booking form with calendar integration
+- Admin dashboard for managing appointments
+- Email notification system
+- Customer portal
+
+## 📝 License
+
+Private project - All rights reserved
+
+---
+
+**BlueWave Tech Help** - Making technology simple and accessible.
