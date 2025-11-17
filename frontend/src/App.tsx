@@ -4,6 +4,15 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
+import Booking from "./pages/Booking";
+import AdminLayout from "./components/admin/AdminLayout";
+import ProtectedRoute from "./components/admin/ProtectedRoute";
+import AdminLogin from "./pages/admin/Login";
+import AdminDashboard from "./pages/admin/Dashboard";
+import AdminBookings from "./pages/admin/Bookings";
+import AdminAvailability from "./pages/admin/Availability";
+import AdminCustomers from "./pages/admin/Customers";
+import AdminCalendar from "./pages/admin/Calendar";
 
 function App() {
 	return (
@@ -19,6 +28,24 @@ function App() {
 						<Route path="/about" element={<About />} />
 						<Route path="/services" element={<Services />} />
 						<Route path="/contact" element={<Contact />} />
+						<Route path="/booking" element={<Booking />} />
+						
+						{/* Admin Routes */}
+						<Route path="/admin/login" element={<AdminLogin />} />
+						<Route
+							path="/admin"
+							element={
+								<ProtectedRoute>
+									<AdminLayout />
+								</ProtectedRoute>
+							}
+						>
+							<Route path="dashboard" element={<AdminDashboard />} />
+							<Route path="bookings" element={<AdminBookings />} />
+							<Route path="availability" element={<AdminAvailability />} />
+							<Route path="customers" element={<AdminCustomers />} />
+							<Route path="calendar" element={<AdminCalendar />} />
+						</Route>
 					</Routes>
 				</main>
 

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Home() {
     return (
         <section className="flex flex-col items-center justify-center text-center p-10 bg-blue-50">
@@ -8,9 +10,12 @@ export default function Home() {
                 Friendly, affordable, and professional tech help for your home and small business.
                 Book a session today and let's make technology simple again.
             </p>
-            <button className="mt-6 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+            <Link
+                to="/booking"
+                className="mt-6 inline-flex items-center justify-center px-6 py-2 rounded-lg font-semibold button-primary"
+            >
                 Book Now
-            </button>
+            </Link>
         </section>
     );
 }

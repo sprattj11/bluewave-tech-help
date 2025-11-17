@@ -4,6 +4,10 @@
 :root {
   /* BlueWave Color Palette */
   --bluewave-blue: #007BFF;
+  --bluewave-blue-dark: #0056B3;
+  --bluewave-blue-darker: #004395;
+  --bluewave-blue-light: #5FB4FF;
+  --bluewave-accent: #E5F0FF;
   --bluewave-white: #FFFFFF;
   --bluewave-gray: #F3F4F6;
   
@@ -53,4 +57,63 @@ button:focus,
 button:focus-visible {
   outline: 2px solid var(--bluewave-blue);
   outline-offset: 2px;
+}
+
+.button-primary {
+  background-color: #3A9EFF; /* Medium sky blue - clearly visible */
+  color: var(--bluewave-white);
+  font-weight: 600;
+  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(58, 158, 255, 0.4);
+  border: none;
+}
+
+.button-primary:hover:not(:disabled) {
+  background-color: #007BFF; /* Main BlueWave blue on hover */
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.5);
+}
+
+.button-primary:active:not(:disabled) {
+  background-color: var(--bluewave-blue-dark);
+  transform: translateY(0);
+}
+
+.button-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.booking-calendar {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  font-family: inherit;
+}
+
+.booking-calendar .react-calendar__navigation button {
+  color: #007BFF;
+  font-weight: 600;
+  border-radius: 999px;
+}
+
+.booking-calendar .react-calendar__tile {
+  border-radius: 12px;
+  padding: 0.75rem 0.25rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.booking-calendar .react-calendar__tile--now {
+  background-color: rgba(0, 123, 255, 0.15);
+  color: #007BFF;
+}
+
+.booking-calendar .react-calendar__tile--active {
+  background-color: #007BFF;
+  color: white;
+}
+
+.booking-calendar .react-calendar__tile:disabled {
+  color: #d1d5db;
 }

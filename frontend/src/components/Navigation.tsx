@@ -34,7 +34,7 @@ function Navigation() {
             
                 {/* Call-to-Action Button */}
                 <Link
-                    to="#"
+                    to="/booking"
                     className="bg-white text-[#007BFF] px-4 py-2 rounded-lg font-semibold hover:bg-[#F3F4F6] transition"
                     style={{ backgroundColor: 'white', color: '#007BFF', padding: '0.5rem 1rem', borderRadius: '0.5rem', fontWeight: '600', textDecoration: 'none' }}
                 >
