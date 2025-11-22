@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getBookings } from "../../services/storageService";
 import type { Booking } from "../../types/admin";
+import { updateLastCheckedTimestamp } from "../../services/notificationService";
 
 export default function AdminDashboard() {
   const [bookings, setBookings] = useState<Booking[]>([]);
@@ -23,11 +24,14 @@ export default function AdminDashboard() {
         completed: allBookings.filter((b) => b.status === "completed").length,
         rejected: allBookings.filter((b) => b.status === "rejected").length,
       });
+
+      // Update last checked timestamp when dashboard loads
+      updateLastCheckedTimestamp();
     };
 
     loadBookings();
-    // Refresh every 30 seconds
-    const interval = setInterval(loadBookings, 30000);
+    // Refresh every 10 seconds for faster notification updates
+    const interval = setInterval(loadBookings, 10000);
     return () => clearInterval(interval);
   }, []);
 

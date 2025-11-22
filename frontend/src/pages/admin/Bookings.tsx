@@ -44,10 +44,17 @@ export default function AdminBookings() {
     setIsProcessing(bookingId);
     const updated = updateBookingStatus(bookingId, newStatus, rejectionReason);
     if (updated && newStatus === "approved") {
-      await sendBookingConfirmationEmail(updated);
-      setToast(
-        `Confirmation email sent to ${updated.contactInfo.email} for ${updated.contactInfo.fullName}`,
-      );
+      try {
+        await sendBookingConfirmationEmail(updated);
+        setToast(
+          `✅ Confirmation email sent to ${updated.contactInfo.email} for ${updated.contactInfo.fullName}`,
+        );
+      } catch (error) {
+        console.error("Failed to send confirmation email:", error);
+        setToast(
+          `⚠️ Booking approved but failed to send email to ${updated.contactInfo.email}. Check console for details.`,
+        );
+      }
     } else if (updated) {
       setToast(`Booking status updated to ${newStatus}`);
     }

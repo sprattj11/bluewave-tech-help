@@ -5,6 +5,7 @@ import {
   getOrCreateCustomer,
   addBookingToCustomer,
 } from "./storageService";
+import { notifyNewBooking } from "./notificationService";
 
 export const submitBooking = async (
   formData: BookingFormData,
@@ -18,6 +19,9 @@ export const submitBooking = async (
   // Create or get customer and link booking
   const customer = getOrCreateCustomer(formData.contactInfo);
   addBookingToCustomer(customer.id, booking.id);
+
+  // Send notification about new booking
+  await notifyNewBooking(booking);
 
   return booking;
 };
