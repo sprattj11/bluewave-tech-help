@@ -1,9 +1,9 @@
 export default function Services() {
     const services = [
         { title: "Device Setup", description: "Help setting up computers, tablets, phones, or smart devices." },
-        { title: "Wi-Fi & Network Troubleshooting", description: "Diagnose and fix slow or unstable internet connections." },
+        { title: "Printer Help", description: "Set up printers, troubleshoot printing issues, and connect wireless printers." },
         { title: "Software Assistance", description: "Support installing or learning new apps and software." },
-        { title: "Data Backup & Cleanup", description: "Ensure your data is secure and your device runs smoothly." }
+        { title: "Wi-Fi Setup & Help", description: "Set up Wi-Fi routers, troubleshoot internet connections, and improve network performance." }
     ];
 
     return (

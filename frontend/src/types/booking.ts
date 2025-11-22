@@ -1,8 +1,8 @@
 export type ServiceType =
   | "Device Setup"
-  | "Wi-Fi & Network"
+  | "Printer Help"
   | "Software Assistance"
-  | "Data Backup & Cleanup";
+  | "Wi-Fi Setup & Help";
 
 export type PreferredContactMethod = "Email" | "Phone";
 

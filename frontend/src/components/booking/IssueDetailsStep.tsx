@@ -10,9 +10,9 @@ interface IssueDetailsStepProps {
 
 const SERVICES: ServiceType[] = [
   "Device Setup",
-  "Wi-Fi & Network",
+  "Printer Help",
   "Software Assistance",
-  "Data Backup & Cleanup",
+  "Wi-Fi Setup & Help",
 ];
 
 function IssueDetailsStep({
