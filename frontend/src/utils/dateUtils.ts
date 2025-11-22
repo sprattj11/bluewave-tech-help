@@ -1,4 +1,4 @@
-import { format, isBefore, startOfDay, getDay } from "date-fns";
+import { format, isBefore, startOfDay } from "date-fns";
 import type { WeeklyAvailability, TimeSlot as AvailabilityTimeSlot } from "../types/admin";
 import { getWeeklyAvailability, getBlockedDates } from "../services/storageService";
 
@@ -49,8 +49,12 @@ const generateSlotsFromRange = (start: string, end: string): string[] => {
 };
 
 // Get day name from date (0 = Sunday, 1 = Monday, etc.)
+// Normalize date to avoid timezone issues on mobile
 const getDayName = (date: Date): keyof WeeklyAvailability => {
-  const dayIndex = getDay(date);
+  // Create a new date using local date components to avoid timezone issues
+  // This ensures we get the correct day of the week regardless of timezone
+  const localDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  const dayIndex = localDate.getDay();
   const dayNames: (keyof WeeklyAvailability)[] = [
     "sunday",
     "monday",
@@ -64,9 +68,12 @@ const getDayName = (date: Date): keyof WeeklyAvailability => {
 };
 
 // Check if date is blocked
+// Normalize date to avoid timezone issues
 const isDateBlocked = (date: Date): boolean => {
+  // Create normalized date using local date components
+  const normalizedDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
   const blockedDates = getBlockedDates();
-  const dateStr = format(date, "yyyy-MM-dd");
+  const dateStr = format(normalizedDate, "yyyy-MM-dd");
   return blockedDates.some((bd) => bd.date === dateStr);
 };
 

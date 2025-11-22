@@ -7,14 +7,14 @@ export default function Services() {
     ];
 
     return (
-        <section className="p-10 max-w-4xl mx-auto">
-            <h2 className="text-2xl font-semibold text-blue-700 mb-6">Services</h2>
+        <section className="px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12 max-w-4xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-semibold text-blue-700 mb-8">Services</h2>
             <div className="grid gap-6 sm:grid-cols-2">
                 {services.map((service) => (
-                    <div key={service.title} className="bg-white shadow-md rounded-lg p-6 border">
-                        <h3 className="text-lg font-bold mb-2">{service.title}</h3>
-                        <p className="text-gray-600 mb-2">{service.description}</p>
-                        <p className="text-blue-700 font-semibold">$25/hr</p>
+                    <div key={service.title} className="bg-white shadow-md rounded-lg p-6 border hover:shadow-lg transition-shadow">
+                        <h3 className="text-xl font-bold mb-3 text-gray-900">{service.title}</h3>
+                        <p className="text-gray-600 mb-4 text-base leading-relaxed">{service.description}</p>
+                        <p className="text-blue-700 font-semibold text-lg">$25/hr</p>
                     </div>
                 ))}
             </div>

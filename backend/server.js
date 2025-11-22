@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { Resend } from "resend";
 import dotenv from "dotenv";
+import { sendMagicLinkEmail, verifyMagicLinkToken } from "./auth.js";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -61,8 +62,52 @@ app.post("/api/send-email", async (req, res) => {
   }
 });
 
+// Magic link authentication endpoints
+app.post("/api/auth/magic-link", async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(400).json({ error: "Email is required" });
+    }
+
+    const result = await sendMagicLinkEmail(email);
+    
+    if (result.success) {
+      return res.json({ success: true, message: result.message });
+    } else {
+      return res.status(400).json({ error: result.message });
+    }
+  } catch (error) {
+    console.error("Server error:", error);
+    return res.status(500).json({ error: "Failed to send magic link" });
+  }
+});
+
+app.post("/api/auth/verify-magic-link", async (req, res) => {
+  try {
+    const { token } = req.body;
+
+    if (!token) {
+      return res.status(400).json({ error: "Token is required", valid: false });
+    }
+
+    const result = verifyMagicLinkToken(token);
+    
+    if (result.valid) {
+      return res.json({ valid: true, email: result.email });
+    } else {
+      return res.status(400).json({ valid: false, error: "Invalid or expired token" });
+    }
+  } catch (error) {
+    console.error("Server error:", error);
+    return res.status(500).json({ error: "Failed to verify token", valid: false });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`🚀 Email API server running on http://localhost:${PORT}`);
   console.log(`📧 Resend API key configured: ${process.env.RESEND_API_KEY ? "Yes" : "No"}`);
+  console.log(`🔐 Magic link authentication enabled`);
 });
 

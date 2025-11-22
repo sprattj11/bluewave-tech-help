@@ -105,17 +105,31 @@ function BookingForm() {
           <BookingCalendar
             value={formData.date}
             onChange={(date) => {
-              setFormData((prev) => ({ ...prev, date, timeSlot: "" })); // Clear time slot when date changes
+              // Ensure date is normalized to avoid timezone issues
+              const normalizedDate = date
+                ? new Date(
+                    date.getFullYear(),
+                    date.getMonth(),
+                    date.getDate(),
+                    12,
+                    0,
+                    0,
+                    0
+                  )
+                : null;
+              setFormData((prev) => ({ ...prev, date: normalizedDate, timeSlot: "" })); // Clear time slot when date changes
             }}
           />
-          <TimeSlotPicker
-            slots={timeSlots}
-            selectedSlot={formData.timeSlot}
-            onSelect={(timeSlot) =>
-              setFormData((prev) => ({ ...prev, timeSlot }))
-            }
-            disabled={!formData.date}
-          />
+          <div className="flex flex-col min-h-0">
+            <TimeSlotPicker
+              slots={timeSlots}
+              selectedSlot={formData.timeSlot}
+              onSelect={(timeSlot) =>
+                setFormData((prev) => ({ ...prev, timeSlot }))
+              }
+              disabled={!formData.date}
+            />
+          </div>
         </div>
       )}
 

@@ -19,6 +19,22 @@ function BookingCalendar({ value, onChange }: BookingCalendarProps) {
     return blockedDateStrings.includes(dateStr);
   };
 
+  const handleDateChange = (date: Date | Date[]) => {
+    // Normalize date to avoid timezone issues on mobile
+    // Create a new date with local date components, setting time to noon to avoid timezone edge cases
+    const selectedDate = Array.isArray(date) ? date[0] : date;
+    const normalizedDate = new Date(
+      selectedDate.getFullYear(),
+      selectedDate.getMonth(),
+      selectedDate.getDate(),
+      12, // Set to noon to avoid timezone issues
+      0,
+      0,
+      0
+    );
+    onChange(normalizedDate);
+  };
+
   return (
     <div className="bg-white rounded-2xl shadow-sm p-4 border border-gray-100">
       <h3 className="text-lg font-semibold mb-4 text-[#007BFF]">
@@ -26,7 +42,7 @@ function BookingCalendar({ value, onChange }: BookingCalendarProps) {
       </h3>
       <Calendar
         value={value}
-        onChange={(date) => onChange(date as Date)}
+        onChange={handleDateChange}
         minDetail="month"
         minDate={new Date()}
         tileDisabled={({ date }) => isDateDisabled(date)}
