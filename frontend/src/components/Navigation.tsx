@@ -12,8 +12,14 @@ function Navigation() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo / Brand */}
-          <Link to="/" className="text-xl sm:text-2xl font-bold tracking-wide hover:opacity-90">
-            BlueWave Tech Help
+          <Link to="/" className="flex items-center space-x-2 hover:opacity-90">
+            <svg width="40" height="40" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden sm:block">
+              <rect width="64" height="64" rx="8" fill="white" fillOpacity="0.2"/>
+              <path d="M12 32 C20 24, 28 24, 36 32 C44 40, 52 40, 60 32" stroke="white" strokeWidth="3" fill="none" strokeLinecap="round"/>
+              <path d="M12 42 C20 34, 28 34, 36 42 C44 50, 52 50, 60 42" stroke="white" strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.7"/>
+              <rect x="28" y="20" width="8" height="6" rx="1" fill="white" opacity="0.9"/>
+            </svg>
+            <span className="text-xl sm:text-2xl font-bold tracking-wide">BlueWave Tech Help</span>
           </Link>
 
           {/* Desktop Navigation */}
