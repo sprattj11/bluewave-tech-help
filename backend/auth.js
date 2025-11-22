@@ -16,14 +16,14 @@ const TOKEN_EXPIRY = 15 * 60 * 1000;
 /**
  * Generate a secure random token
  */
-const generateToken = (): string => {
+const generateToken = () => {
   return crypto.randomBytes(32).toString("hex");
 };
 
 /**
  * Send magic link email
  */
-export const sendMagicLinkEmail = async (email: string): Promise<{ success: boolean; message: string }> => {
+export const sendMagicLinkEmail = async (email) => {
   // Only allow admin email
   if (email !== ADMIN_EMAIL) {
     return { success: false, message: "Unauthorized email address" };
@@ -112,7 +112,7 @@ If you didn't request this login link, please ignore this email.
 /**
  * Verify magic link token
  */
-export const verifyMagicLinkToken = (token: string): { valid: boolean; email?: string } => {
+export const verifyMagicLinkToken = (token) => {
   const tokenData = magicLinkTokens.get(token);
 
   if (!tokenData) {
